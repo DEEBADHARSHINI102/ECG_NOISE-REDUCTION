@@ -1,92 +1,97 @@
-# AI-Based ECG Noise Reduction Platform for Rural & Veterinary Healthcare
+# ECG Noise Reduction and Signal Enhancement
 
-## 📌 Overview
-Electrocardiogram (ECG) signals collected in rural healthcare camps and veterinary mobile clinics are often severely affected by noise. Motion artifacts, power-line interference, poor electrode contact, and unstable recording environments lead to distorted ECG signals, resulting in inaccurate diagnosis and delayed treatment.
+A complete and reproducible project that demonstrates **ECG signal noise reduction** using classical signal processing techniques.  
+The project focuses on cleaning raw ECG signals by removing baseline wander and high-frequency (muscle) noise while preserving essential cardiac features such as the **QRS complex**.
 
-This project aims to develop a **web-based AI-driven ECG noise reduction platform** that cleans noisy ECG signals and presents clinically interpretable waveforms through a full-stack application. The solution is designed to support **rural human healthcare and stray animal (veterinary) diagnostics**, where access to high-quality medical infrastructure is limited.
-
----
-
-## 🚨 Problem Statement
-In India, especially in rural regions and mobile veterinary clinics:
-- ECG recordings are frequently corrupted due to patient/animal movement.
-- Power supply instability introduces 50 Hz power-line noise.
-- Poor electrode placement causes baseline wander and signal loss.
-- Existing ECG denoising solutions are mostly offline MATLAB or Python scripts.
-- There is **no deployable, user-friendly, web-based ECG noise reduction system** for real-world usage.
-
-These challenges reduce the reliability of ECG interpretation and negatively impact both human and animal healthcare outcomes.
+This repository is designed to be **beginner-friendly**, **academically solid**, and **open-source ready**.
 
 ---
 
-## 💡 Proposed Solution
-This project proposes a **full-stack web application integrated with AI-based ECG noise reduction techniques** that:
+## 📌 Project Motivation
 
-- Accepts noisy ECG signals or ECG images via a web interface.
-- Applies digital signal processing and AI-based denoising methods.
-- Displays clean ECG waveforms for better clinical interpretation.
-- Stores ECG records securely for future reference.
-- Supports both **human and veterinary ECG use cases**.
-- Works entirely as a **software solution** without requiring additional hardware.
+Electrocardiogram (ECG) signals are highly sensitive to noise introduced during acquisition. Common causes include:
 
----
+- Patient movement
+- Muscle activity (EMG noise)
+- Respiration (baseline wander)
+- Poor electrode contact
+- Mobile or low-cost recording environments
 
-## 🌍 Real-World Impact
-- **Rural Healthcare:** Improves ECG interpretation in mobile health camps and primary healthcare centers.
-- **Veterinary & Stray Animal Care:** Helps NGOs and veterinary doctors obtain reliable ECG readings from noisy environments.
-- **Healthcare AI Readiness:** Acts as a preprocessing layer for downstream AI-based disease detection systems.
-- **Cost-Effective:** Eliminates dependency on expensive ECG hardware upgrades.
+Noisy ECG signals can lead to **misinterpretation and incorrect diagnosis**.  
+This project demonstrates how **classical preprocessing techniques** can significantly improve ECG signal quality before further analysis or clinical use.
 
 ---
 
-## ⭐ Why This Project is Unique
-- No existing **MERN-stack-based ECG noise reduction platform** found in open-source ecosystems.
-- Bridges the gap between **academic ECG signal processing research** and **real-world deployment**.
-- Focuses on **Indian rural healthcare and veterinary use cases**, which are largely underrepresented.
-- Combines **Full-Stack Development + AI + Healthcare**, making it suitable for both research and industry relevance.
-- Designed as a scalable, extensible platform rather than a one-time script.
+## 🧠 What This Project Does
+
+✔ Uses real ECG data  
+✔ Visualizes raw noisy ECG  
+✔ Removes baseline wander  
+✔ Removes high-frequency (muscle) noise  
+✔ Saves cleaned ECG separately  
+✔ Compares raw vs cleaned signals visually  
+
+No artificial intelligence is used in this version — the focus is on **core signal processing fundamentals**.
 
 ---
 
-## 🛠️ Planned Technology Stack
-### Frontend
-- React.js
-- HTML5, CSS3
-- ECG waveform visualization components
+## 📂 Dataset Used
 
-### Backend
-- Node.js
-- Express.js
-- RESTful APIs
+- **MIT-BIH Arrhythmia Database**
+- Source: PhysioNet
+- Record used: `100`
 
-### Database
-- MongoDB (for storing ECG records and user data)
+### Files:
+- `100.dat` — raw ECG signal (binary)
+- `100.hea` — signal metadata
 
-### AI & Signal Processing
-- Digital filters (Bandpass, Notch, Baseline Wander Removal)
-- AI-based denoising models (CNN / U-Net – planned)
-- ECG feature extraction (R-peaks, heart rate)
-
-### Deployment
-- Frontend: Vercel
-- Backend: Render / Cloud services
-- Database: MongoDB Atlas
+The dataset is publicly available and widely used in academic research.
 
 ---
 
-## 📊 Dataset Sources
-The project will utilize publicly available and ethically approved datasets:
-
-- **MIT-BIH Arrhythmia Database** – PhysioNet
-- **PTB-XL ECG Dataset** – Kaggle
-- Publicly available noisy ECG datasets for benchmarking
-- (Planned) Validation with real-world rural and veterinary ECG samples
 
 ---
 
-## 🧠 System Architecture (High-Level)
-1. User uploads ECG signal or image via web interface.
-2. Backend processes the input and applies noise reduction algorithms.
-3. Cleaned ECG waveform is generated and visualized.
-4. Processed data is stored securely in the database.
-5. User can download or review ECG reports.
+## 🔬 Methods Used
+
+### 1️⃣ Baseline Wander Removal
+- Baseline estimated using a moving average filter
+- Low-frequency drift removed by subtraction
+- Eliminates artifacts caused by respiration and motion
+
+### 2️⃣ High-Frequency Noise Removal
+- Moving average smoothing applied
+- Reduces muscle (EMG) noise
+- Preserves sharp QRS complexes and ECG morphology
+
+---
+
+## 📊 Results
+
+- Significant reduction in baseline drift
+- High-frequency noise visibly suppressed
+- ECG waveform centered and cleaner
+- Essential cardiac features preserved
+- Clear visual improvement confirmed through comparison plots
+
+---
+
+
+
+
+🔮 Future Enhancements
+
+1.AI-based ECG denoising (CNN / Autoencoders)
+
+2.Multi-lead ECG processing
+
+3.Real-time ECG noise reduction
+
+4.Web-based ECG visualization dashboard
+
+## 🧪 How to Run the Project
+
+### 1️⃣ Install dependencies
+```bash
+pip install wfdb numpy pandas matplotlib
+
